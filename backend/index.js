@@ -1,7 +1,5 @@
 const express = require('express');
 const server = express();
-const ejs = require('ejs');
-const path = require('path');
 server.set('views', path.join(__dirname, 'views'));
 
 const userData = [
@@ -41,11 +39,6 @@ server.get('/:age', (request, response) => {
     response.send('You are a child');
   }
 });
-
-server.get("/temp", (request, response) => {
-  res.render('index', { message: 'Hello, World!' });
-})
-
 
 server.listen(3000, () => {
   console.log('Server is running on port 3000');
