@@ -2,45 +2,141 @@
 
 ## HTTP Methods & HTTP Status Codes
 
-**HTTP Methods** - These are actions that can be performed on resources via HTTP. Common methods include:
+**HTTP Methods** – Actions that can be performed on resources via HTTP:
+
 - **GET**: Retrieve data from the server.
+
+```js
+fetch("https://api.example.com/users")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
 - **POST**: Submit data to be processed to the server.
+
+```js
+fetch("https://api.example.com/users", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name: "Alice" }),
+});
+```
+
 - **PUT**: Update or replace existing data.
+
+```js
+fetch("https://api.example.com/users/1", {
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name: "Updated Alice" }),
+});
+```
+
 - **DELETE**: Remove data from the server.
 
-**HTTP Status Codes** - These are issued by a server in response to a client's request. Common codes include:
+```js
+fetch("https://api.example.com/users/1", {
+  method: "DELETE",
+});
+```
+
+**HTTP Status Codes** – Common codes returned from the server:
+
 - **200 OK** – The request has succeeded.
 - **404 Not Found** – The server cannot find the requested resource.
 - **500 Internal Server Error** – The server encountered an unexpected condition.
 - **403 Forbidden** – The server understands the request but refuses to authorize it.
 
+```js
+fetch("/some-endpoint").then((res) => {
+  if (res.status === 200) {
+    console.log("Success");
+  } else if (res.status === 404) {
+    console.log("Not Found");
+  }
+});
+```
+
 ## CSS Selectors
 
-- **Element Selector** - Targets all elements of a specific type (e.g., `p`, `div`).
-- **Class Selector (`.classname`)** - Selects elements with a specific class.
-- **ID Selector (`#idname`)** - Selects a unique element with the given ID.
-- **Attribute Selector** - Targets elements with a specific attribute (e.g., `[type="text"]`).
+```css
+/* Element Selector */
+p {
+  color: blue;
+}
+
+/* Class Selector */
+.card {
+  padding: 10px;
+}
+
+/* ID Selector */
+#header {
+  background-color: black;
+}
+
+/* Attribute Selector */
+input[type="text"] {
+  border: 1px solid gray;
+}
+```
 
 ## GIT Basics
 
-- **init** – Initializes a new Git repository.
-- **add** – Adds changes to the staging area.
-- **commit** – Saves the staged changes to the repository with a message.
-- **push** – Uploads local changes to a remote repository.
-- **pull** – Fetches and merges changes from the remote repository.
-- **clone** – Makes a copy of a repository into a new directory.
-- **branch** – Creates or switches to a new branch.
+```bash
+git init             # Initialize a repo
+git add .            # Stage changes
+git commit -m "msg"  # Commit with message
+git push origin main # Push to remote repo
+git pull origin main # Pull from remote
+git clone URL        # Clone repo
+git branch dev       # Create branch
+git checkout dev     # Switch to branch
+```
 
 ## Callback & Higher-Order Function
 
-- **Callback** – A function passed into another function to be executed later.
-- **Higher-order function** – A function that takes another function as an argument or returns a function.
+```js
+// Callback function
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+
+function sayBye() {
+  console.log("Goodbye!");
+}
+
+greet("Alice", sayBye);
+
+// Higher-order function
+function multiplier(factor) {
+  return function (x) {
+    return x * factor;
+  };
+}
+
+const double = multiplier(2);
+console.log(double(5)); // 10
+```
 
 ## Array Methods
 
-- **filter** – Creates a new array with elements that pass a test.
-- **map** – Creates a new array with the results of calling a function on every element.
-- **forEach** – Executes a function for each array element (does not return a new array).
-- **push** – Adds one or more elements to the end of an array.
-- **pop** – Removes the last element from an array.
+```js
+const numbers = [1, 2, 3, 4, 5];
 
+// filter
+const evens = numbers.filter((n) => n % 2 === 0); // [2, 4]
+
+// map
+const squares = numbers.map((n) => n * n); // [1, 4, 9, 16, 25]
+
+// forEach
+numbers.forEach((n) => console.log(n)); // prints each number
+
+// push
+numbers.push(6); // [1, 2, 3, 4, 5, 6]
+
+// pop
+numbers.pop(); // [1, 2, 3, 4, 5]
+```
