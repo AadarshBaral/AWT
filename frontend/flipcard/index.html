@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>OhFlip</title>
+</head>
+
+<body>
+    <h1>OhFlip</h1>
+    <p class="subtitle">Create beautiful flip cards with your questions and categories</p>
+
+    <div class="no-cards" id="no-cards">
+        <img src="https://cdn-icons-png.flaticon.com/512/1621/1621635.png" alt="No card" />
+        <p>No cards yet. Add your first question below!</p>
+    </div>
+
+    <div id="card-container"></div>
+
+    <div class="fab" onclick="toggleModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="45" fill="white" viewBox="0 0 24 24">
+            <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
+        </svg>
+
+
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="close" onclick="toggleModal()">&times;</div>
+        <h2>Add New Card</h2>
+
+        <label>Question</label>
+        <textarea id="question" rows="3" placeholder="Type your question here..."></textarea>
+
+        <label>Answer</label>
+        <textarea id="answer" rows="3" placeholder="Type the answer here..."></textarea>
+
+        <label>Category</label>
+        <div class="tags" id="tags-container"></div>
+
+        <button class="add-card-btn" onclick="addCard()">Add Card</button>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
