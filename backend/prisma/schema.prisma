@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = "mongodb+srv://admin:husr6YHALstBxBRM@flipcards.lg984yi.mongodb.net/flipcards?retryWrites=true&w=majority&appName=flipcards"
+}
+
+model Category {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  name  String
+  cards Card[]
+}
+
+model Card {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  question   String
+  answer     String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String   @db.ObjectId
+}
